@@ -3,13 +3,13 @@ class Node:
         self.data = data
         self.left_child = None
         self.right_child = None
+        self.next_sibling = None
 
 
 class Tree:
     def __init__(self):
         self.root_node = None
 
-    # add new elements to the BST
     def insert(self, data):
         node = Node(data)
 
@@ -26,23 +26,31 @@ class Tree:
                     if current is None:
                         parent.left_child = node
                         return
-
                 else:
                     current = current.right_child
                     if current is None:
                         parent.right_child = node
                         return
 
-    # find Height of the BST
-    def height(self, root):
+    def fill_sibling_pointer(self, root):
         if root is None:
-            return 0
+            return
         else:
-            return max(self.height(root.left_child), self.height(root.right_child)) + 1
+            if root.left_child:
+                root.left.next_sibling = root.right
+            if root.right_child:
+                if root.next_sibling:
+                    root.right_child.next_sibling = root.left_child
+                else:
+                    root.right_child.next_sibling = None
+
+        self.fill_sibling_pointer(root.left_child)
+        self.fill_sibling_pointer(root.right_child)
 
 
 if __name__ == "__main__":
     tree = Tree()
-    nums = [23, 26, 20, 32, 19]
+    nums = [12, 23, 43, 40, 29]
+
     [tree.insert(num) for num in nums]
-    print(f"Height of Tree: {tree.height(tree.root_node)}")
+    tree.fill_sibling_pointer(tree.root_node)

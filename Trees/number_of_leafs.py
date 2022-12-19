@@ -35,7 +35,8 @@ class Tree:
                         parent.left_child = node
                         return
 
-    def leaf_number(self, root):
+    @staticmethod
+    def leaf_number(root):
         if root is None:
             return
         else:

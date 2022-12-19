@@ -1,64 +1,34 @@
-class Node:
-    def __init__(self, data=None):
-        self.data = data
-        self.next = None
-
-
-class Queue:
+class Stack:
     def __init__(self):
-        self.tracks = None
-        self.size = 0
+        self.items = []
 
-    def enqueue(self, data):
-        node = Node(data)
-        if self.tracks is None:
-            self.tracks = node
-            return
-        else:
-            current = self.tracks
-            while current.next:
-                current = current.next
-            current.next = node
+    def push(self, data):
+        self.items.insert(0, data)
 
-        self.size += 1
-
-    def dequeue(self):
-        first = self.tracks.data
-        self.tracks = self.tracks.next
-        self.size -= 1
-        return first
-
-    def iter(self):
-        current = self.tracks
-        while current:
-            val = current.data
-            current = current.next
-            yield val
-
-
-class Track:
-    def __init__(self, title=None):
-        self.title = title
-
-
-class MediaQueue(Queue):
-    def __init__(self):
-        super().__init__()
-
-    def add_song(self, data):
-        self.enqueue(data)
-
-    def play(self):
-        while self.size >= 1:
-            current_song = self.dequeue()
-            print(f'Now playing:{current_song.title}')
+    def pop(self):
+        return self.items.pop()
 
 
 if __name__ == "__main__":
-    player = MediaQueue()
-    songs = ['Dior', 'Kondiko', 'Geri Inengi']
-    for song in songs:
-        track = Track(song)
-        player.add_song(track)
+    def match_brackets(statement):
+        stack = Stack()
+        isBalanced = False
 
-    player.play()
+        for word in statement:
+            if word in ["{", "[", "("]:
+                stack.push(word)
+
+        top = stack.pop()
+
+        while stack.items:
+            for w in statement:
+                if w == "}" or w == "]" or w == ")" and w == top:
+                    isBalanced = True
+                else:
+                    isBalanced = False
+                top = stack.pop()
+
+            return "Brackets Match" if isBalanced else "Brackets don't match"
+
+
+    print(match_brackets("Hello ()"))
