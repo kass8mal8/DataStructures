@@ -1,4 +1,5 @@
-""" Give an algorithm for finding least common ancestor of two nodes """
+""" Give an algorithm for finding the least common ancestor of two nodes """
+
 
 class Node:
     def __init__(self, data=None):
@@ -18,7 +19,6 @@ class Tree:
         else:
             node = Node(data)
             current = self.root_node
-            parent = None
 
             while True:
                 parent = current
@@ -34,16 +34,6 @@ class Tree:
                         parent.left_child = node
                         return
 
-    def preorder(self, root, arr):
-        if root is None:
-            return
-        else:
-            self.preorder(root.left_child, arr)
-            arr.append(root.data)
-            self.preorder(root.right_child, arr)
-
-        return arr
-
     def lca(self, root, alpha, beta):
         if root is None:
             return
@@ -52,8 +42,10 @@ class Tree:
         else:
             left, right = self.lca(root.left_child, alpha, beta), self.lca(root.right_child, alpha, beta)
 
-            if left and right: return root.data
-            else: return left if left else right
+            if left and right:
+                return root.data
+            else:
+                return left if left else right
 
 
 if __name__ == "__main__":
@@ -61,5 +53,4 @@ if __name__ == "__main__":
     nums = [20, 17, 15, 19, 23, 27]
 
     [tree.insert(num) for num in nums]
-    print(tree.preorder(tree.root_node, []))
     print(f"Least Common Ancestor:{tree.lca(tree.root_node, 23, 17)}")

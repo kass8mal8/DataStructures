@@ -34,7 +34,7 @@ class Tree:
                         parent.left_child = node
                         return
 
-    def deepNode(self, root):
+    def deep_node(self, root):
         if root is None:
             return
         else:
@@ -66,4 +66,4 @@ if __name__ == "__main__":
     nums = [18, 21, 10, 14, 23, 7, 13, 3]
     [tree.insert(num) for num in nums]
     print(f"Tree:{[num for num in tree.post_order(tree.root_node, [])]}")
-    print(f"Deepest node:{tree.deepNode(tree.root_node)}")
+    print(f"Deepest node:{tree.deep_node(tree.root_node)}")

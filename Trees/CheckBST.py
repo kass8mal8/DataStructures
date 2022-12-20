@@ -12,29 +12,6 @@ class Tree:
     def __init__(self):
         self.root_node = None
 
-    def insert(self, data):
-        node = Node(data)
-
-        if self.root_node is None:
-            self.root_node = node
-            return
-        else:
-            current = self.root_node
-            while True:
-                parent = current
-
-                if current.data > node.data:
-                    current = current.left_child
-                    if current is None:
-                        parent.left_child = node
-                        return
-
-                else:
-                    current = current.right_child
-                    if current is None:
-                        parent.right_child = node
-                        return
-
     # find maximum
     def find_max(self, root):
         if root.right_child is None:
@@ -70,10 +47,10 @@ class Tree:
 
 if __name__ == "__main__":
     tree = Tree()
-    nums = [13, 28, 32, 84]
-    [tree.insert(num) for num in nums]
 
     if tree.check_binary(tree.root_node):
         print('A Binary Search Tree')
     else:
         print('Not Binary Search Tree')
+
+# Time complexity for this algorithm is O(n^2)
