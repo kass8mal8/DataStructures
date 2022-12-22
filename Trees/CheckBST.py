@@ -1,11 +1,5 @@
 """ Give an algorithm to check whether the given binary tree is a BST or not. """
-
-
-class Node:
-    def __init__(self, data=None):
-        self.data = data
-        self.left_child = None
-        self.right_child = None
+# Time complexity for this algorithm is O(n^2)
 
 
 class Tree:
@@ -52,5 +46,3 @@ if __name__ == "__main__":
         print('A Binary Search Tree')
     else:
         print('Not Binary Search Tree')
-
-# Time complexity for this algorithm is O(n^2)

@@ -4,13 +4,6 @@
 # You need to have tree data I've skipped insertion fo tree data
 
 
-class Node:
-    def __init__(self, data=None):
-        self.data = data
-        self.left_child = None
-        self.right_child = None
-
-
 class Tree:
     def __init__(self):
         self.root_node = None

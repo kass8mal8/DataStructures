@@ -6,7 +6,7 @@ class Stack:
         self.items = []
 
     def push(self, data):
-        self.items.insert(0, data)
+        self.items.append(data)
 
     def pop(self):
         top = self.items.pop()
@@ -29,5 +29,5 @@ if __name__ == "__main__":
 
         return isPalindrome
 
-    statement = 'School'
+    statement = 'madam'
     print(is_palindrome(statement))

@@ -1,34 +1,41 @@
 class Stack:
     def __init__(self):
         self.items = []
+        self.size = 0
 
     def push(self, data):
-        self.items.insert(0, data)
+        self.items.append(data)
+        self.size += 1
 
     def pop(self):
-        return self.items.pop()
+        return self.items.pop(0)
 
 
 if __name__ == "__main__":
-    def match_brackets(statement):
-        stack = Stack()
-        isBalanced = False
+    stack = Stack()
 
-        for word in statement:
-            if word in ["{", "[", "("]:
-                stack.push(word)
+    def match(tp, bt):
+        if tp == "{" and bt == "}" or tp == "[" and bt == "]" or tp == "(" and bt == ")":
+            return "Symbols match"
+        else:
+            return False
 
-        top = stack.pop()
 
-        while stack.items:
-            for w in statement:
-                if w == "}" or w == "]" or w == ")" and w == top:
-                    isBalanced = True
-                else:
-                    isBalanced = False
+    def balance_symbols(statement):
+        for st in statement:
+            if st in ["{", "[", "("]:
+                stack.push(st)
+
+            if st in ["}", "]", ")"]:
+                length = len(stack.items)
                 top = stack.pop()
+                arr = [st]
 
-            return "Brackets Match" if isBalanced else "Brackets don't match"
+                if len(arr) == length:
+                    match(top, st)
+                else:
+                    return "Symbols dont match"
 
 
-    print(match_brackets("Hello ()"))
+    symbols = "{}"
+    print(balance_symbols(symbols))
