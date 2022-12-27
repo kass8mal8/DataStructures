@@ -1,7 +1,7 @@
 """ Algorithm to check if BT is a BST
     Time complexity for this algorithm is O(n) """
 
-# You need to have tree data I've skipped insertion fo tree data
+# You need to have tree data I've skipped insertion of tree data
 
 
 class Tree:

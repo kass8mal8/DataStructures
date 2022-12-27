@@ -29,8 +29,7 @@ class DoublyLinkedList:
     def insert_first(self, data):
         node = Node(data)
         if self.head is None:
-            self.head = node
-            self.tail = self.head
+            self.head = self.tail = node
         else:
             node.prev = None
             node.next = self.head
@@ -96,6 +95,6 @@ class DoublyLinkedList:
 
 double = DoublyLinkedList()
 
-[double.append(x) for x in ['Lisa', 'Elsie', 3, 8]]
+[double.append(x) for x in ['Sylvia', 'Lisa', 'Elsie', 3, 8]]
 double.remove_at(2)
 print([name for name in double.iter()])

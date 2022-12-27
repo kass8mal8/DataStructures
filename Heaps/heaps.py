@@ -18,9 +18,9 @@ class Heap:
             return index * 2
         else:
             if self.heapList[index * 2] < self.heapList[index * 2 + 1]:
-                return index * 2 + 1
-            else:
                 return index * 2
+            else:
+                return index * 2 + 1
 
     def percolate_down(self, index):
         while index * 2 <= self.size:
@@ -37,7 +37,7 @@ class Heap:
 
     def delete_max(self):
         # temp = self.heapList[1]
-        self.heapList[1] = self.heapList[self.size]
+        self.heapList[1], self.heapList[self.size] = self.heapList[self.size], self.heapList[1]
         self.size -= 1
         self.heapList.pop()
         self.percolate_down(1)
