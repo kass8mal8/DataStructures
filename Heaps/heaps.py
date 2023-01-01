@@ -8,7 +8,7 @@ class Heap:
 
     def percolate_up(self, index):
         while index // 2 > 0:
-            if self.heapList[index] < self.heapList[index // 2]:
+            if self.heapList[index] > self.heapList[index // 2]:
                 self.heapList[index], self.heapList[index // 2] = self.heapList[index // 2], self.heapList[index]
 
             index //= 2
@@ -47,6 +47,6 @@ if __name__ == "__main__":
     heap = Heap()
     nums = [12, 32, 43, 95, 30]
     [heap.append(num) for num in nums]
-    print(heap.heapList)
+    print(heap.heapList[1:])
     heap.delete_max()
-    print(heap.heapList)
+    print(heap.heapList[1:])

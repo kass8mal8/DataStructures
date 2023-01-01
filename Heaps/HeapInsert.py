@@ -23,4 +23,4 @@ if __name__ == "__main__":
     nums = [23, 31, 19, 10]
 
     [heap.append(nm) for nm in nums]
-    print(heap.heapList)
+    print(heap.heapList[1:])
