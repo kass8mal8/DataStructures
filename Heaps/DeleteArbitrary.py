@@ -18,13 +18,13 @@ class Heap:  # min heap
         self.percolate_up(self.size)
 
     def min_index(self, i):
-        if i * 2 + 2 > self.size:
+        if i * 2 > self.size:
             return i * 2 + 1
         else:
-            if self.heapArr[i * 2 + 1] < self.heapArr[i * 2 + 2]:
-                return i * 2 + 1
+            if self.heapArr[i * 2] < self.heapArr[i * 2 + 1]:
+                return i * 2
             else:
-                return i * 2 + 2
+                return i * 2 + 1
 
     def percolate_down(self, i):
         while i * 2 + 1 <= self.size:

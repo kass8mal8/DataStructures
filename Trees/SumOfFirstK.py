@@ -62,4 +62,4 @@ if __name__ == "__main__":
     nums = [10, 32, 29, 19, 36]
     [tree.insert(num) for num in nums]
 
-    print(f"Sum: {tree.sum_first_k(tree.root_node, 3)}")
+    print(f"Sum: {tree.sum_first_k(tree.root_node, 4)}")

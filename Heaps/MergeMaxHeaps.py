@@ -8,13 +8,13 @@ class Heap:  # Max Heap
         self.size = 0
 
     def max_index(self, i):
-        if i * 2 + 2 > self.size:
-            return i * 2 + 1
+        if i * 2 + 1 > self.size:
+            return i * 2
         else:
-            if self.heapArr[i * 2 + 1] > self.heapArr[i * 2 + 2]:
-                return i * 2 + 1
+            if self.heapArr[i * 2] > self.heapArr[i * 2 + 1]:
+                return i * 2
             else:
-                return i * 2 + 2
+                return i * 2 + 1
 
     def percolate_up(self, i):
         while i // 2 > 0:

@@ -3,33 +3,47 @@
 
 class Heap:  # Min Heap
     def __init__(self):
-        self.heapList = [0]
+        self.heapArr = [0]
         self.size = 0
 
-    def percolate_up(self, i):
-        while i // 2 > 0:
-            if self.heapList[i] > self.heapList[i // 2]:
-                self.heapList[i], self.heapList[i // 2] = self.heapList[i // 2], self.heapList[i]
-            i //= 2
+    def build_heap(self, A):
+        index, self.size = len(A) // 2, len(A)
+        self.heapArr = self.heapArr + A[:]
 
-    def append(self, k):
-        self.heapList.append(k)
-        self.size += 1
-        self.percolate_up(self.size)
+        while index > 0:
+            self.percolate_down(index)
+            index -= 1
+
+    def min_index(self, i):
+        if i * 2 + 1 > self.size:
+            return i * 2
+        else:
+            if self.heapArr[i * 2] < self.heapArr[i * 2 + 1]:
+                return i * 2
+            else:
+                return i * 2 + 1
+
+    def percolate_down(self, i):
+        while i * 2 <= self.size:
+            index = self.min_index(i)
+            if self.heapArr[index] < self.heapArr[i]:
+                self.heapArr[index], self.heapArr[i] = self.heapArr[i], self.heapArr[index]
+
+            i = index
 
     def min_in_max(self):
-        minimum = self.heapList[1]
+        minimum = self.heapArr[1]
 
         for i in range((self.size + 1) // 2, self.size + 1):
-            if self.heapList[i] < minimum:
-                minimum = self.heapList[i]
+            if self.heapArr[i] < minimum:
+                minimum = self.heapArr[i]
         return minimum
 
 
 if __name__ == "__main__":
     heap = Heap()
     nums = [23, 31, 19, 10]
+    heap.build_heap(nums)
 
-    [heap.append(nm) for nm in nums]
-    print(heap.heapList)
+    print(heap.heapArr[1:])
     print(f"Minimum: {heap.min_in_max()}")

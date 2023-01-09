@@ -50,7 +50,7 @@ class Tree:
 
 if __name__ == "__main__":
     tree = Tree()
-    nums = [20, 17, 15, 19, 23, 27]
+    nums = [2, 1, 3, 4, 5, 6]
 
     [tree.insert(num) for num in nums]
-    print(f"Least Common Ancestor:{tree.lca(tree.root_node, 23, 17)}")
+    print(f"Least Common Ancestor:{tree.lca(tree.root_node, 1, 6)}")
