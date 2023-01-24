@@ -9,6 +9,6 @@ def insertion_sort(A):
         A[k] = temp
 
 
-arr = [13, 21, 26, 11, 17, 77, 31, 935]
+arr = [13, -1, 26, 11, 17, 77, 31]
 insertion_sort(arr)
 print(f"Sorted array:{arr}")

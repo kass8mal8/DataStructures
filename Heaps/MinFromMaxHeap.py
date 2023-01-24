@@ -1,7 +1,7 @@
 """ Insert into a Max Heap """
 
 
-class Heap:  # Min Heap
+class Heap:  # Max Heap
     def __init__(self):
         self.heapArr = [0]
         self.size = 0
@@ -26,7 +26,7 @@ class Heap:  # Min Heap
     def percolate_down(self, i):
         while i * 2 <= self.size:
             index = self.min_index(i)
-            if self.heapArr[index] < self.heapArr[i]:
+            if self.heapArr[index] > self.heapArr[i]:
                 self.heapArr[index], self.heapArr[i] = self.heapArr[i], self.heapArr[index]
 
             i = index

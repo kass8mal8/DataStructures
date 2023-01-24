@@ -10,7 +10,7 @@ def partition(A, low, high):
     swap(A, pivot, high)
 
     for i in range(low, high):
-        if A[i] >= A[high]:
+        if A[i] <= A[high]:
             swap(A, i, low)
             low += 1
 
@@ -22,6 +22,6 @@ def swap(A, x, y):
     A[x], A[y] = A[y], A[x]
 
 
-arr = [13, 21, 11, 19, 17, 14]
+arr = [14, 13]
 quick_sort(arr, 0, len(arr) - 1)
 print(f"Sorted array:{arr}")
