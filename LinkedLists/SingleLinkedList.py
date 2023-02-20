@@ -73,5 +73,5 @@ class SingleLinkedList:
 linkedlist = SingleLinkedList()
 nums = [51, 97, 61, 73]
 [linkedlist.append(num) for num in nums]
-linkedlist.reverse_linked_list()
+linkedlist.remove_nth_node_from_last(1)
 print([num for num in linkedlist.iter()])

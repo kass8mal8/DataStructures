@@ -64,8 +64,8 @@ class Tree:
 
 if __name__ == "__main__":
     tree = Tree()
-    nums = [23, 26, 20, 32, 19]
+    nums = [23, 26, 20, 32, 19, 25]
     [tree.insert(num) for num in nums]
 
     print(tree.inorder_traversal(tree.root_node, []))
-    print(f"Node Depth: {tree.depth(tree.root_node, 19)}")
+    print(f"Node Depth: {tree.depth(tree.root_node, 23)}")
