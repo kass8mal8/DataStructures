@@ -1,41 +1,39 @@
+""" Algorithm that matches brackets from a string """
+
+
 class Stack:
     def __init__(self):
         self.items = []
-        self.size = 0
 
     def push(self, data):
-        self.items.append(data)
-        self.size += 1
+        self.items.insert(0, data)
 
     def pop(self):
         return self.items.pop(0)
 
+    def isEmpty(self):
+        return True if len(self.items) == 0 else False
+
 
 if __name__ == "__main__":
-    stack = Stack()
 
-    def match(tp, bt):
-        if tp == "{" and bt == "}" or tp == "[" and bt == "]" or tp == "(" and bt == ")":
-            return "Symbols match"
-        else:
-            return False
+    def isMatched(expr):
 
+        left = ['(', '{', '[']  # opening delimiters
+        right = [')', '}', ']']  # respective closing delims
 
-    def balance_symbols(statement):
-        for st in statement:
-            if st in ["{", "[", "("]:
-                stack.push(st)
+        S = Stack()
 
-            if st in ["}", "]", ")"]:
-                length = len(stack.items)
-                top = stack.pop()
-                arr = [st]
+        for c in expr:
+            if c in left:
+                S.push(c)  # push left delimiter on stack
+            elif c in right:
+                if S.isEmpty(): return False  # nothing to match with
 
-                if len(arr) == length:
-                    match(top, st)
-                else:
-                    return "Symbols dont match"
+                if right.index(c) != left.index(S.pop()):
+                    return False  # mismatched
 
+                return S.isEmpty()
 
-    symbols = "{}"
-    print(balance_symbols(symbols))
+    expression = "[Hello world]"
+    print(isMatched(expression))

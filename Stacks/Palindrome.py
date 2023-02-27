@@ -20,14 +20,12 @@ if __name__ == "__main__":
         isPalindrome = False
         for x in word:
             stack.push(x)
-            
-        for w in word:
-            if w == stack.pop():
-                isPalindrome = True
-            else:
-                isPalindrome = False
+
+        while stack.items:
+            isPalindrome = True
+            top = stack.pop()
 
         return isPalindrome
 
-    statement = 'madam'
+    statement = 'madim'
     print(is_palindrome(statement))
